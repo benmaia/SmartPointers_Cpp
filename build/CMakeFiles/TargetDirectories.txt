@@ -1,3 +1,0 @@
-/home/benmaia/CTW/Academy/ctw-academy-exercises/memory_managment/build/CMakeFiles/Memory.dir
-/home/benmaia/CTW/Academy/ctw-academy-exercises/memory_managment/build/CMakeFiles/edit_cache.dir
-/home/benmaia/CTW/Academy/ctw-academy-exercises/memory_managment/build/CMakeFiles/rebuild_cache.dir
