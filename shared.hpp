@@ -5,9 +5,6 @@
 #include <string>
 #include <memory>
 #include <algorithm>
-#include <iostream>
-#include <memory>
-#include <string>
 #include <vector>
 
 template <class T> struct sharedBlock
@@ -17,7 +14,7 @@ template <class T> struct sharedBlock
 	size_t weakCounter;
 };
 
-template <class T> class SharedPtr final
+template <class T> class SharedPtr
 {
 	sharedBlock<T>* block;
 	void copy(const SharedPtr& other)
@@ -34,12 +31,12 @@ template <class T> class SharedPtr final
 			{
 				if (block->ptr)
 					delete block->ptr;
-				block->ptr = nullptr;
+				block->ptr = NULL;
 			}
 			if (!block->weakCounter && !block->ptr)
 			{
 				delete block;
-				block = nullptr;
+				block = NULL;
 			}
 		}
 	}
@@ -47,14 +44,12 @@ template <class T> class SharedPtr final
 	public:
 		SharedPtr(T* pointer)
 		{
-			block = pointer? new sharedBlock<T>{pointer, 1, 0} : nullptr;
+			block = pointer? new sharedBlock<T>{pointer, 1, 0} : NULL;
 		}
 
 		~SharedPtr() { clean(); };
 
 		SharedPtr(const SharedPtr& other) { copy(other); }
-
-		bool	operator>(const SharedPtr& other) { return *this > other; }
 
 		SharedPtr& operator=(std::nullptr_t) { clean(); }
 
@@ -73,9 +68,9 @@ template <class T> class SharedPtr final
 
 		size_t user_count() const { return block? block->sharedCounter : 0; }
 
-		const T*	get() const { return block? block->ptr : nullptr; }
+		const T*	get() const { return block? block->ptr : NULL; }
 
-		T*	get() { return block? block->ptr : nullptr; }
+		T*	get() { return block? block->ptr : NULL; }
 
 		void	swap(SharedPtr& other)
 		{
@@ -86,19 +81,9 @@ template <class T> class SharedPtr final
 
 		void	reset() { clean(); }
 
-		void	reset(T* ptr)
-		{
-			clean();
-			block = new sharedBlock<T>{ptr, 1, 0};
-		}
+		void	reset(T* ptr) { block = new sharedBlock<T>{ptr, 1, 0}; }
 
-		bool	owner_before(const SharedPtr& other) const noexcept
-		{
-			if (*this > other)
-				return (true);
-			return (false);
-		}
-
+		bool	owner_before(const SharedPtr& other) const { return this < &other; }
 };
 
 #endif

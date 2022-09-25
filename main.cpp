@@ -3,7 +3,7 @@
 class Base 
 {
 	public:
-	Base() = default;
+	Base();
 	std::string name;
 	void set(std::string n) { name = n; }
 	Base(std::string n) : name(n) {};
@@ -12,9 +12,13 @@ class Base
 
 int main() {
 
-	 SharedPtr<int> a(new int{2});
+	 //SharedPtr<int> a(new int{2});
 
-	 SharedPtr<int> b(new int{5});
+	 //SharedPtr<int> b(new int{5});
+
+	SharedPtr<int> a(new int(2));
+	SharedPtr<int> b(new int(5));
+
 
 	 std::cout << "A adress -> " << a.get() << std::endl;
 	 std::cout << "B adress -> " << b.get() << std::endl;
@@ -61,7 +65,9 @@ int main() {
 	 std::cout << "ahah\n";
 
 
+	 std::cout << "\n OWNER \n\n";
 	 std::cout << a.owner_before(c) << std::endl;
+	 std::cout << a.owner_before(a) << std::endl;
 	 std::cout << c.owner_before(a) << std::endl;
 
 
@@ -69,35 +75,35 @@ int main() {
 	 std::cout << "\n";
 	 std::cout << "\n";
 
-	  std::shared_ptr<Base> sptr = std::make_shared<Base>("te");
+	  //std::shared_ptr<Base> sptr = std::make_shared<Base>("te");
 
-	  sptr->print();
-	  std::cout << sptr.get() << "\n";
-	  sptr.reset(new Base("pa"));
-	  sptr->print();
-	  std::cout << sptr.get() << "\n";
+	  //sptr->print();
+	  //std::cout << sptr.get() << "\n";
+	  //sptr.reset(new Base("pa"));
+	  //sptr->print();
+	  //std::cout << sptr.get() << "\n";
 
 
-	 std::cout << "\n";
-	 std::cout << "\n";
-	 std::cout << "\n";
-	 std::cout << "\n";
-	 std::cout << "\n";
-	 std::cout << "\n";
+	 //std::cout << "\n";
+	 //std::cout << "\n";
+	 //std::cout << "\n";
+	 //std::cout << "\n";
+	 //std::cout << "\n";
+	 //std::cout << "\n";
 
-	  std::shared_ptr<Base> y = std::make_shared<Base>("te");
-	  std::shared_ptr<Base> x = std::make_shared<Base>("te");
-	  std::shared_ptr<Base> z = std::make_shared<Base>("te");
+	  //std::shared_ptr<Base> x = std::make_shared<Base>("te");
+	  //std::shared_ptr<Base> y = std::make_shared<Base>("te");
+	  //std::shared_ptr<Base> z = std::make_shared<Base>("te");
 
-	  std::cout << "here\n";
-	  std::cout << x.owner_before(x) << "\n";
-	  std::cout << "here\n";
-	  std::cout << x.owner_before(y) << "\n";
-	  std::cout << "here\n";
-	  std::cout  << x.owner_before(z) << "\n";
-	  std::cout << "here\n";
-	  std::cout  << y.owner_before(x) << "\n";
-	  std::cout << "here\n";
+	  //std::cout << "here\n";
+	  //std::cout << x.owner_before(x) << "\n";
+	  //std::cout << "here\n";
+	  //std::cout << x.owner_before(y) << "\n";
+	  //std::cout << "here\n";
+	  //std::cout  << x.owner_before(z) << "\n";
+	  //std::cout << "here\n";
+	  //std::cout  << y.owner_before(x) << "\n";
+	  //std::cout << "here\n";
 
 
 

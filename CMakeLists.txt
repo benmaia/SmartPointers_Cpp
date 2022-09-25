@@ -8,7 +8,7 @@ if (MSVC)
     add_compile_options(/W4 /WX)
 else()
     # lots of warnings and all warnings as errors
-	 add_compile_options(-Wall -Werror -Wextra -fsanitize=address -g)
+	 add_compile_options(-Wall -Werror -Wextra -g)
 endif()
 
 add_executable(Memory main.cpp)
